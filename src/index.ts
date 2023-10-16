@@ -13,14 +13,14 @@ app.use(bodyParser.json());
 const router = Router();
 
 router.get('/', (_req: Request, res: Response) => {
-  res.json({ message: `Node-Starter connected to: Db - CyclicTestEnv` });
+  res.json({ message: `Node-Starter connected to: Db - RenderTestEnv` });
 });
 
 app.use(router);
 
 const connect = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI, { dbName: 'TestOnCyclic' });
+    await mongoose.connect(process.env.MONGO_URI, { dbName: 'RenderTestEnv' });
     console.log('Connected to Mongo');
   } catch (error) {
     console.log('Can"t connect to Mongo');

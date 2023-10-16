@@ -13,6 +13,7 @@
   "scripts": {
     "clean": "./node_modules/.bin/rimraf ./build",
     "build": "run-s clean && npx tsc",
+    "build:inst": "npm i && run-s clean && npx tsc",
     "dev": "nodemon ./src/index.ts",
     "start": "node ./build/main/index.js",
     "lint": "run-s lint:*",

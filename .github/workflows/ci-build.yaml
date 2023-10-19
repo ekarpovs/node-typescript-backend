@@ -24,8 +24,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       # - name: Authenticate with private NPM package
-      - run: echo "@ekarpovs:registry=https://npm.pkg.github.com" > ~/.npmrc
-      - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_REGISTRY_TOKEN }}" >> ~/.npmrc
+      - run: echo "@ekarpovs:registry=https://npm.pkg.github.com" > .npmrc
+      - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_REGISTRY_TOKEN }}" >> .npmrc
       - run: npm ci
         # env:
         #   NPM_TOKEN: ${{ secrets.GITHUB_REGISTRY_TOKEN }}

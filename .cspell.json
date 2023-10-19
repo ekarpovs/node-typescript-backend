@@ -18,6 +18,7 @@
     "globby",
     "libauth",
     "mkdir",
+    "npmjs",
     "prettierignore",
     "resave",
     "sandboxed",

@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import express, { Express, Request, Response, Router } from 'express';
 import mongoose from 'mongoose';
 
-import { LoggerOptions, initLogger } from '@ekarpovs/simple-logger';
+import { initLogger, level, LoggerOptions } from '@ekarpovs/simple-logger';
 import { LoggerFormatter, initHttpLogger } from '@ekarpovs/http-logger';
 import {
   AuthConfig,
@@ -19,14 +19,20 @@ const app: Express = express();
 
 app.use(bodyParser.json());
 
+// const logRotated: loggerOptionsRotated = {
+//   fullFilename: process.env.SIMPLE_LOGGER_FILE_LOCATION,
+//   datePattern: process.env.SIMPLE_LOGGER_FILE_DATE_PATTERN,
+//   fileMaxSize: process.env.SIMPLE_LOGGER_FILE_MAX_SIZE,
+//   maxFiles: process.env.SIMPLE_LOGGER_MAX_FILES,
+//   zippedArchive: process.env.SIMPLE_LOGGER_ZIPPED_ARCHIVE,
+// };
+
 const loggerConfig: LoggerOptions = {
-  loggerFileLocation: process.env.SIMPLE_LOGGER_FILE_LOCATION,
-  loggerFileMaxSize: process.env.SIMPLE_LOGGER_FILE_MAX_SIZE,
-  loggerDatePattern: process.env.SIMPLE_LOGGER_FILE_DATE_PATTERN,
-  loggerMaxFiles: process.env.SIMPLE_LOGGER_MAX_FILES,
-  loggerZippedArchive: process.env.SIMPLE_LOGGER_ZIPPED_ARCHIVE,
-  loggerLevel: process.env.SIMPLE_LOGGER_LEVEL,
+  loggerService: 'Node-Backend-Logger',
+  loggerLevel: level.http,
+  // loggerOptionsRotated: logRotated,
 };
+
 const logger = initLogger(loggerConfig);
 
 const cfg: LoggerFormatter = {
@@ -82,10 +88,10 @@ const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI, { dbName: 'RenderTestEnv' });
     console.log('Connected to Mongo');
-    logger.http('Connected to Mongo');
+    logger.info('Connected to Mongo');
   } catch (error) {
     console.log('Can"t connect to Mongo');
-    logger.http('Can"t connect to Mongo');
+    logger.info('Can"t connect to Mongo');
     process.exit(1);
   }
 };

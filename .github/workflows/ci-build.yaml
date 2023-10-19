@@ -20,7 +20,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18x'
-          cache: 'npm'
 
       - name: Authenticate with private NPM package
       - run: echo "@ekarpovs:registry=https://npm.pkg.github.com" > .npmrc

@@ -3,7 +3,7 @@ import swaggerAutogen from 'swagger-autogen';
 const doc = {
   info: {
     version: 'v1.0.0',
-    title: 'Swagger Demo Project',
+    title: 'Swagger Project for node-typescript-backend',
     description: 'Implementation of Swagger with TypeScript',
   },
   servers: [

@@ -2,6 +2,8 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import express, { Express, Request, Response, Router } from 'express';
 import mongoose from 'mongoose';
+import swaggerUi from 'swagger-ui-express';
+import swaggerOutput from './swagger_output.json';
 
 import { initLogger, level, LoggerOptions } from '@ekarpovs/simple-logger';
 import { LoggerFormatter, initHttpLogger } from '@ekarpovs/http-logger';
@@ -83,6 +85,8 @@ router.get('/test-auth', isAuthenticated, (_req, res) => {
 });
 
 app.use(router);
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerOutput));
 
 const connect = async () => {
   try {

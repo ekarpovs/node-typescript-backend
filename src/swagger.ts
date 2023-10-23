@@ -11,6 +11,10 @@ const doc = {
       url: 'http://localhost:3007',
       description: '',
     },
+    {
+      url: 'https://node-typescript-backend.onrender.com/',
+      description: 'deployment on Render',
+    },
   ],
 };
 

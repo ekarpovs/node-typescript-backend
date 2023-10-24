@@ -10,9 +10,6 @@ import express, {
 import mongoose from 'mongoose';
 import cors from 'cors';
 
-import swaggerUi from 'swagger-ui-express';
-import swaggerOutput from './swagger_output.json';
-
 import { initLogger, level, LoggerOptions } from '@ekarpovs/simple-logger';
 import { LoggerFormatter, initHttpLogger } from '@ekarpovs/http-logger';
 import {
@@ -22,6 +19,9 @@ import {
   initAuth,
   SessionConfig,
 } from '@ekarpovs/auth-session';
+
+import swaggerUi from 'swagger-ui-express';
+import swaggerOutput from './swagger_output.json';
 
 dotenv.config();
 
@@ -39,6 +39,7 @@ app.use(
 
 app.use((_req: Request, res: Response, next: NextFunction) => {
   res.header('Content-Type', 'application/json;charset=UTF-8');
+  // res.header('Content-Type', 'text/html;charset=UTF-8');
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header(
     'Access-Control-Allow-Headers',

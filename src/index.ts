@@ -1,7 +1,15 @@
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
-import express, { Express, Request, Response, Router } from 'express';
+import express, {
+  Express,
+  NextFunction,
+  Request,
+  Response,
+  Router,
+} from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
+
 import swaggerUi from 'swagger-ui-express';
 import swaggerOutput from './swagger_output.json';
 
@@ -18,6 +26,26 @@ import {
 dotenv.config();
 
 const app: Express = express();
+
+// for usage with revers-proxy like NGINX
+// app.set("trust proxy", 1);
+
+app.use(
+  cors({
+    credentials: true,
+    origin: [process.env.CLIENT_BASE_URL || 'http://localhost:3007'],
+  }),
+);
+
+app.use((_req: Request, res: Response, next: NextFunction) => {
+  res.header('Content-Type', 'application/json;charset=UTF-8');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept',
+  );
+  next();
+});
 
 app.use(bodyParser.json());
 

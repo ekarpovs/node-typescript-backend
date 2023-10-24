@@ -9,7 +9,11 @@ const doc = {
   servers: [
     {
       url: 'http://localhost:3007',
-      description: '',
+      description: 'Local',
+    },
+    {
+      url: 'https://node-typescript-backend.onrender.com',
+      description: 'Render',
     },
   ],
 };

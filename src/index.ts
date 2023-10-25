@@ -21,7 +21,9 @@ import {
 } from '@ekarpovs/auth-session';
 
 import swaggerUi from 'swagger-ui-express';
-import swaggerOutput from './swagger_output.json';
+import swaggerOutput from './docs/swagger_output.json';
+import { ModelType, rulesRepository } from '@ekarpovs/authorization-repo-mongo';
+import { authorization } from '@ekarpovs/authorization-checker';
 
 dotenv.config();
 
@@ -100,6 +102,11 @@ const authConfig: AuthConfig = {
 authConfig.logger = logger;
 
 const { authRouter, isAuthenticated } = initAuth(authConfig);
+// Authorization
+// Init rules repository
+const rulesRepo = rulesRepository(ModelType.ACL);
+// Init the authorization package
+const isAuthorized = authorization({ rulesRepo });
 
 // Routers Setup
 const router = Router();
@@ -109,9 +116,20 @@ router.get('/', (_req: Request, res: Response) => {
   res.json({ message: `Node-Backend connected to: Db - RenderTestEnv` });
 });
 
+// Test an authentication
 router.get('/test-auth', isAuthenticated, (_req, res) => {
   res.json({ message: 'You are logged in' });
 });
+
+// Test an authorization-acl
+router.get(
+  '/test-acl',
+  isAuthenticated,
+  isAuthorized('read', 'test-acl'),
+  (_req, res) => {
+    res.json({ message: 'You are authorized to access this resource' });
+  },
+);
 
 app.use(router);
 

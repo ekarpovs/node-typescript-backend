@@ -43,7 +43,7 @@
     ]
   },
   "include": [
-    "src/swagger-output.json",
+    "src//docs/swagger-output.json",
     "src/**/*.ts"
   ],
   "exclude": [

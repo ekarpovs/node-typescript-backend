@@ -38,7 +38,7 @@ app.use(
 );
 
 app.use((_req: Request, res: Response, next: NextFunction) => {
-  res.header('Content-Type', 'application/json;charset=UTF-8');
+  // res.header('Content-Type', 'application/json;charset=UTF-8');
   // res.header('Content-Type', 'text/html;charset=UTF-8');
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header(

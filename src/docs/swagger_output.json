@@ -3,7 +3,7 @@
   "info": {
     "version": "v1.0.0",
     "title": "Swagger Project for node-typescript-backend",
-    "description": "Implementation of Swagger with TypeScript"
+    "description": "Swagger with TypeScript"
   },
   "servers": [
     {
@@ -18,7 +18,10 @@
   "paths": {
     "/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Application"
+        ],
+        "description": "Home",
         "responses": {
           "200": {
             "description": "OK"
@@ -28,7 +31,23 @@
     },
     "/test-auth": {
       "get": {
-        "description": "Test a protected route",
+        "tags": [
+          "Application"
+        ],
+        "description": "Test a route protected by authentication",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/test-acl": {
+      "get": {
+        "tags": [
+          "Application"
+        ],
+        "description": "Test a route protected by authentication and authorization",
         "responses": {
           "200": {
             "description": "OK"
@@ -38,6 +57,9 @@
     },
     "/auth": {
       "get": {
+        "tags": [
+          "Authentication via auth-session"
+        ],
         "description": "Test that the auth is live",
         "responses": {
           "200": {
@@ -48,6 +70,9 @@
     },
     "/auth/logout": {
       "get": {
+        "tags": [
+          "Authentication via auth-session"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -58,6 +83,9 @@
     },
     "/auth/register": {
       "post": {
+        "tags": [
+          "Authentication via auth-session"
+        ],
         "description": "API to send register data",
         "requestBody": {
           "content": {
@@ -88,6 +116,9 @@
     },
     "/auth/login": {
       "post": {
+        "tags": [
+          "Authentication via auth-session"
+        ],
         "description": "API to send login data",
         "requestBody": {
           "content": {
@@ -96,7 +127,7 @@
                 "type": "object",
                 "properties": {
                   "email": {
-                    "example": "any"
+                    "example": "test_user1@gmail.com"
                   },
                   "password": {
                     "example": "any"
@@ -115,6 +146,9 @@
     },
     "/auth/change-password": {
       "post": {
+        "tags": [
+          "Authentication via auth-session"
+        ],
         "description": "API to send change password data",
         "requestBody": {
           "content": {
@@ -145,6 +179,9 @@
     },
     "/auth/reset-password-request": {
       "post": {
+        "tags": [
+          "Authentication via auth-session"
+        ],
         "description": "API to send reset password request data",
         "requestBody": {
           "content": {
@@ -169,6 +206,9 @@
     },
     "/auth/reset-password": {
       "post": {
+        "tags": [
+          "Authentication via auth-session"
+        ],
         "description": "API to send reset password data",
         "requestBody": {
           "content": {

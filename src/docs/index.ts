@@ -1,4 +1,4 @@
 /**
  * Setup Swagger api-doc page
  */
-export { docsRouter } from './docs-router';
+export { docsRouter } from './router';

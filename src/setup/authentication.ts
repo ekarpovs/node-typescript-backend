@@ -1,10 +1,11 @@
 import {
   AuthConfig,
-  BaseUser,
+  // BaseUser,
   CookieConfig,
   initAuth,
   SessionConfig,
 } from '@ekarpovs/auth-session';
+import { User } from '../users';
 
 export const setupAuthentication = ({ app, logger, emailClient }) => {
   // Authentication
@@ -26,7 +27,8 @@ export const setupAuthentication = ({ app, logger, emailClient }) => {
   const authConfig: AuthConfig = {
     app: app,
     storage: undefined,
-    User: BaseUser,
+    // User: BaseUser,
+    User: User,
     sessionConfig: sessionConfig,
   };
 

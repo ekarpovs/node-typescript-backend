@@ -3,7 +3,7 @@
   "info": {
     "version": "v1.0.0",
     "title": "Swagger Project for node-typescript-backend",
-    "description": "Implementation of Swagger with TypeScript"
+    "description": "Swagger with TypeScript"
   },
   "servers": [
     {
@@ -127,7 +127,7 @@
                 "type": "object",
                 "properties": {
                   "email": {
-                    "example": "any"
+                    "example": "test_user1@gmail.com"
                   },
                   "password": {
                     "example": "any"

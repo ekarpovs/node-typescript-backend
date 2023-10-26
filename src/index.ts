@@ -12,6 +12,7 @@ import {
 } from './setup';
 import { docsRouter } from './docs';
 import { appRouter } from './app-domain';
+import { userRouter } from './users';
 
 dotenv.config();
 
@@ -36,9 +37,10 @@ const isAuthorized = setupAuthorization();
 
 // Routers Setup
 const router = Router();
-router.use('/', appRouter({ isAuthenticated, isAuthorized }));
+router.use('/', appRouter({ isAuthenticated, isAuthorized, logger }));
 router.use('/', docsRouter());
 router.use('/auth', authRouter);
+router.use('/users', userRouter({ isAuthenticated, isAuthorized, logger }));
 app.use(router);
 
 // Run server

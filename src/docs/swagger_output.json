@@ -101,6 +101,9 @@
                   },
                   "password": {
                     "example": "any"
+                  },
+                  "role": {
+                    "example": "user/admin"
                   }
                 }
               }

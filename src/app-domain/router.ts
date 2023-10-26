@@ -1,6 +1,7 @@
 import { Request, Response, Router } from 'express';
 
-export const appRouter = ({ isAuthenticated, isAuthorized }) => {
+export const appRouter = ({ isAuthenticated, isAuthorized, logger }) => {
+  logger.info('Setup App-domain Router');
   const router = Router();
   // Test that the backend is live
   router.get('/', (_req: Request, res: Response) => {

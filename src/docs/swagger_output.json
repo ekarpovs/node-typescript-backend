@@ -55,6 +55,41 @@
         }
       }
     },
+    "/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "User list protected by authentication and authorization",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/users/{userId}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "User data protected by authentication and authorization",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "type": "integer",
+            "required": true,
+            "description": "Numeric ID of the user to get"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/auth": {
       "get": {
         "tags": [
@@ -130,10 +165,10 @@
                 "type": "object",
                 "properties": {
                   "email": {
-                    "example": "test_user1@gmail.com"
+                    "example": "t1@gmail.com"
                   },
                   "password": {
-                    "example": "any"
+                    "example": "111111"
                   }
                 }
               }

@@ -13,9 +13,9 @@ export const userRouter = ({ isAuthenticated, isAuthorized, logger }) => {
     cnt.getAllUsers,
   );
   router.get(
-    '/user',
+    '/:userId',
     isAuthenticated,
-    isAuthorized('read', 'users/user'),
+    isAuthorized('read', 'users'),
     cnt.getUserById,
   );
   return router;

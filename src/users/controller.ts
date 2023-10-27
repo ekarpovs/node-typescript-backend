@@ -16,7 +16,7 @@ export const userController = ({ logger }) => {
     return res.status(ResponseCode.OK).json(users);
   };
   const getUserById = async (req: Request, res: Response) => {
-    const { userId } = req.body;
+    const { userId } = req.params;
     const user = await getUserData(userId);
     if (!user) {
       throw new AppError({
